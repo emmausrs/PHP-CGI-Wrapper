@@ -23,7 +23,7 @@
 	define('MULTIPART_FILE_FORMAT', MULTIPART_FORMAT . "; filename=\"%s\"\r\nContent-Type: %s\r\n\r\n%s\r\n");
 
 	function escapequotes(&$string) {
-		str_replace('"', '\"', $string);
+		$string = str_replace('"', '\"', $string);
 	}
 
 	function execute_cgi($script)
