@@ -28,6 +28,11 @@
 
 	function execute_cgi($script)
 	{
+		// Set the proper environment variables if they aren't present.
+		if (!isset($_ENV['REQUEST_METHOD']))
+			foreach ($_SERVER as $var => $value)
+				putenv("$var=$value"); // not sure if safe
+
 		$ph = proc_open($script, array(
 			array('pipe', 'r'), // STDIN
 			array('pipe', 'w'), // STDOUT
