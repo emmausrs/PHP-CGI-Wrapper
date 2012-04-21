@@ -33,6 +33,15 @@
 			foreach ($_SERVER as $var => $value)
 				putenv("$var=$value"); // not sure if safe
 
+		// Set cookies
+		if (!isset($_ENV['HTTP_COOKIE']) && count($_COOKIE)) {
+			$cookies = array();
+			foreach ($_COOKIE as $name => $value)
+				$cookies[] = urlencode($name).'='.urlencode($value);
+
+			putenv(sprintf('HTTP_COOKIE=%s', implode('; ', $cookies)));
+		}
+
 		$ph = proc_open($script, array(
 			array('pipe', 'r'), // STDIN
 			array('pipe', 'w'), // STDOUT
