@@ -17,9 +17,6 @@
  * http://sam.zoy.org/wtfpl/COPYING for more details.
  */
 
-ini_set('display_errors', true);
-error_reporting(E_ALL & ~E_STRICT);
-
 // Defined here because we can't concatenate class constants.
 define('MULTIPART_FORMAT', "%s\r\nContent-Disposition: form-data; name=\"%s\"");
 define('MULTIPART_TEXT_FORMAT', MULTIPART_FORMAT."\r\n\r\n%s\r\n");
